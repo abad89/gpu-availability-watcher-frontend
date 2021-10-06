@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
 import { Link, Redirect } from "react-router-dom";
 import MyGPUCard from "./MyGPUCard";
+import EditEmailForm from "./EditEmailForm";
+
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
-export default function DashboardPage({ user, onLogOut }) {
+export default function DashboardPage({ user, onLogOut, loggedIn }) {
   const [myGpuList, setMyGpuList] = useState([]);
+  const [hideEditForm, setHideEditForm] = useState(true);
 
   useEffect(() => {
     if (user != null) {
@@ -20,6 +23,10 @@ export default function DashboardPage({ user, onLogOut }) {
       (gpu) => gpu.id !== gpuToDelete
     );
     setMyGpuList(updatedMyGpuList);
+  }
+
+  function handleEditClick(){
+    setHideEditForm((setHideEditForm) => !setHideEditForm)
   }
 
   const gpusItem = myGpuList.map(watch => (
@@ -39,9 +46,15 @@ export default function DashboardPage({ user, onLogOut }) {
   ));
   console.log("dashboard gpu list:", myGpuList);
   console.log("dashboard log", user);
+
+
   return (
     <div>
-      {user ? <p>Current user: {user.email}</p> : <Redirect to="/" />}
+      {loggedIn ? null : <Redirect to="/" />}
+      <div>
+        {loggedIn ? <p>Welcome back, {user.email}<button onClick={handleEditClick}>Edit Email</button></p> : null }
+        {hideEditForm ? null : <EditEmailForm user={user} onLogOut={onLogOut} /> }
+      </div>
       <button onClick={onLogOut}>Logout</button>
       <Link
         to={{

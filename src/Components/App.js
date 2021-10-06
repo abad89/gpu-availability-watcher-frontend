@@ -22,9 +22,10 @@ function App() {
   }
 
   function handleLogOut() {
-    setCurrentUser(null)
-    handleLogIn()
     history.push("/")
+    handleLogIn()
+    setCurrentUser(null)
+    console.log("logging out...")
   }
 
   return (
@@ -35,7 +36,7 @@ function App() {
           <GPUsPage user={currentUser} />
         </Route>
         <Route exact path="/dashboard">
-          <DashboardPage user={currentUser} onLogOut={handleLogOut} />
+          <DashboardPage loggedIn={loggedIn} user={currentUser} onLogOut={handleLogOut} />
         </Route>
         <Route exact path="/">
           {loggedIn ? <Redirect to="/dashboard" /> : <LoginPage onChangeUser={handleChangeUser} />}
