@@ -69,10 +69,6 @@ export default function LoginPage({ onChangeUser }) {
 
   return (
     <div>
-      <p>
-        Please select your email. Go ahead and click it twice until I figure out
-        why it doesn't work the first time.
-      </p>
       <p>{errors}</p>
       <div className={"p-1"}>
         <form onSubmit={handleSubmit}>

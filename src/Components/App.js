@@ -10,9 +10,7 @@ function App() {
   let history = useHistory();
 
   function handleChangeUser(user) {
-    if (currentUser) {
-      handleLogIn();
-    }
+    handleLogIn();
     setCurrentUser(user);
     // console.log("handleChangeUser", currentUser);
   }
