@@ -2,6 +2,7 @@ import { useState } from "react"
 import { Route, Switch, Redirect } from "react-router-dom";
 import DashboardPage from "./DashboardPage";
 import LoginPage from "./LoginPage";
+import GPUsPage from "./GPUsPage"
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -23,6 +24,9 @@ function App() {
     <div className="App">
       Hello App.js!
       <Switch>
+        <Route exact path="/gpus">
+          <GPUsPage />
+        </Route>
         <Route exact path="/dashboard">
           <DashboardPage user={currentUser} />
         </Route>

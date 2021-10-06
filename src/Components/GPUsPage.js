@@ -1,5 +1,6 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import GPUCard from "./GPUCard";
+
 
 const BASE_URL = process.env.REACT_APP_BASE_URL
 
