@@ -5,20 +5,25 @@ import GPUCard from "./GPUCard";
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 export default function GPUsPage({ user }) {
-  console.log("Gpus page user:", user)
+  // console.log("Gpus page user:", user)
   const [gpuList, setGpuList] = useState([]);
+  const [filterGPUs, setFilterGPUs] = useState(false);
 
   useEffect(() => {
     fetch(BASE_URL + "/gpus")
       .then((r) => r.json())
-      .then(setGpuList);
+      .then(gpus => {
+        setGpuList(gpus.filter(function (gpu) {
+          return gpu.url != null;
+        }))
+      });
   }, []);
 
-  let activeGPUS = gpuList.filter(function (gpu) {
-    return gpu.url != null;
-  });
-
-  const gpusItem = activeGPUS.map((gpu) => (
+  const gpusItem = gpuList.filter(function(gpu) {
+    if (!filterGPUs) {return true}
+    if (gpu.onlineAvailability) {return true}
+    return false
+  }).map((gpu) => (
     <GPUCard
       key={gpu.id}
       gpuid={gpu.id}
@@ -31,10 +36,18 @@ export default function GPUsPage({ user }) {
       user={user}
     />
   ));
+  
+  function handleHideUnavailableClick(){
+    setFilterGPUs((filterGPUs) => !filterGPUs)
+  }
+  
+  function handleShowAllClick(){
+    setFilterGPUs((filterGPUs) => !filterGPUs)
+  }
 
   return (
     <div>
-      <p>Current user: {user.email}</p>
+      {/* <p>Current user: {user.email}</p> */}
       <Link
         to={{
           pathname: "/dashboard",
@@ -42,6 +55,8 @@ export default function GPUsPage({ user }) {
       >
         Return to Dashboard
       </Link>
+      {filterGPUs ? null : <button onClick={handleHideUnavailableClick}>Hide Unavailable GPUs</button>}
+      {filterGPUs ? <button onClick={handleShowAllClick}>Show All GPUs</button> : null}
       {gpusItem}
     </div>
   );
