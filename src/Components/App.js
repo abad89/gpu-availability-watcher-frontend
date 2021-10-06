@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Route, Switch, Redirect } from "react-router-dom";
+import DashboardPage from "./DashboardPage";
 import LoginPage from "./LoginPage";
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
       Hello App.js!
       <Switch>
         <Route exact path="/dashboard">
-          Dashboard.
+          <DashboardPage user={currentUser} />
         </Route>
         <Route exact path="/">
           {loggedIn ? <LoginPage onChangeUser={handleChangeUser} /> : <Redirect to="/dashboard" />}
