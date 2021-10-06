@@ -37,11 +37,7 @@ export default function GPUsPage({ user }) {
     />
   ));
   
-  function handleHideUnavailableClick(){
-    setFilterGPUs((filterGPUs) => !filterGPUs)
-  }
-  
-  function handleShowAllClick(){
+  function handleToggleFilterClick(){
     setFilterGPUs((filterGPUs) => !filterGPUs)
   }
 
@@ -55,8 +51,8 @@ export default function GPUsPage({ user }) {
       >
         Return to Dashboard
       </Link>
-      {filterGPUs ? null : <button onClick={handleHideUnavailableClick}>Hide Unavailable GPUs</button>}
-      {filterGPUs ? <button onClick={handleShowAllClick}>Show All GPUs</button> : null}
+      {filterGPUs ? null : <button onClick={handleToggleFilterClick}>Hide Unavailable GPUs</button>}
+      {filterGPUs ? <button onClick={handleToggleFilterClick}>Show All GPUs</button> : null}
       {gpusItem}
     </div>
   );
