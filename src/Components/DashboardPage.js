@@ -13,7 +13,7 @@ export default function DashboardPage({ user }) {
   }, []);
 
   const gpusItem = myGpuList.map((gpu) => (
-    <GPUCard
+    <MyGPUCard
       key={gpu.id}
       name={gpu.name}
       largeImage={gpu.largeImage}
