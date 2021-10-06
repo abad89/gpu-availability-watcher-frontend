@@ -19,7 +19,7 @@ function GPUCard({ name, onlineAvailability, salePrice, largeImage, url, sku, gp
   return (
     <div>
       <h1><a href={url}>{name}</a></h1>
-      <p>Debug - gpu id: {gpuid}</p>
+      {/* <p>Debug - gpu id: {gpuid}</p> */}
       <img src={largeImage} alt={name}></img>
       {onlineAvailability ? <p>Available!</p> : <p>Unavailable</p>}
       <p>Price: {salePrice}</p>

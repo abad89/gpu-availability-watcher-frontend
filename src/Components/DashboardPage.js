@@ -8,21 +8,33 @@ export default function DashboardPage({ user, onLogOut }) {
 
   useEffect(() => {
     if (user != null) {
-      fetch(BASE_URL + `/users/${user.id}/gpus`)
+      fetch(BASE_URL + `/users/${user.id}/usergpus`)
         .then((r) => r.json())
         .then(setMyGpuList);
     }
   }, []);
+  console.log(myGpuList)
 
-  const gpusItem = myGpuList.map((gpu) => (
+  function handleDeleteGpu(gpuToDelete) {
+    const updatedMyGpuList = myGpuList.filter(
+      (gpu) => gpu.id !== gpuToDelete
+    );
+    setMyGpuList(updatedMyGpuList);
+  }
+
+  const gpusItem = myGpuList.map(watch => (
     <MyGPUCard
-      key={gpu.id}
-      name={gpu.name}
-      largeImage={gpu.largeImage}
-      salePrice={gpu.salePrice}
-      onlineAvailability={gpu.onlineAvailability}
-      url={gpu.url}
-      sku={gpu.sku}
+      key={watch.gpu.id}
+      watchid={watch.id}
+      gpuid={watch.gpu.id}
+      name={watch.gpu.name}
+      largeImage={watch.gpu.largeImage}
+      salePrice={watch.gpu.salePrice}
+      onlineAvailability={watch.gpu.onlineAvailability}
+      url={watch.gpu.url}
+      sku={watch.gpu.sku}
+      user={user}
+      onDeleteGpu={handleDeleteGpu}
     />
   ));
   console.log("dashboard gpu list:", myGpuList);
