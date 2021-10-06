@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import GPUCard from "./GPUCard";
+import MyGPUCard from "./MyGPUCard";
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 export default function DashboardPage({ user }) {
@@ -27,12 +27,10 @@ export default function DashboardPage({ user }) {
   console.log("dashboard log", user);
   return (
     <div>
+        <p>Current user: {user.email}</p>
       <Link
         to={{
           pathname: "/gpus",
-          state: {
-            user: user,
-          },
         }}
       >
         View GPU Database

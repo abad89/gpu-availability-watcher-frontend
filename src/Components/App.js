@@ -25,7 +25,7 @@ function App() {
       Hello App.js!
       <Switch>
         <Route exact path="/gpus">
-          <GPUsPage />
+          <GPUsPage user={currentUser} />
         </Route>
         <Route exact path="/dashboard">
           <DashboardPage user={currentUser} />
