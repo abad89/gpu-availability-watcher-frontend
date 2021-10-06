@@ -1,12 +1,13 @@
 import { useState } from "react"
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch, Redirect, useHistory } from "react-router-dom";
 import DashboardPage from "./DashboardPage";
 import LoginPage from "./LoginPage";
 import GPUsPage from "./GPUsPage"
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
+  let history = useHistory();
 
   function handleChangeUser(user) {
     if (currentUser) {
@@ -20,6 +21,12 @@ function App() {
     setLoggedIn((loggedIn) => !loggedIn);
   }
 
+  function handleLogOut() {
+    setCurrentUser(null)
+    handleLogIn()
+    history.push("/")
+  }
+
   return (
     <div className="App">
       Hello App.js!
@@ -28,10 +35,10 @@ function App() {
           <GPUsPage user={currentUser} />
         </Route>
         <Route exact path="/dashboard">
-          <DashboardPage user={currentUser} />
+          <DashboardPage user={currentUser} onLogOut={handleLogOut} />
         </Route>
         <Route exact path="/">
-          {loggedIn ? <LoginPage onChangeUser={handleChangeUser} /> : <Redirect to="/dashboard" />}
+          {loggedIn ? <Redirect to="/dashboard" /> : <LoginPage onChangeUser={handleChangeUser} />}
         </Route>
       </Switch>
     </div>

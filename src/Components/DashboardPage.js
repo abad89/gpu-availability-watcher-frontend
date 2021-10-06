@@ -1,15 +1,17 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import MyGPUCard from "./MyGPUCard";
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
-export default function DashboardPage({ user }) {
+export default function DashboardPage({ user, onLogOut }) {
   const [myGpuList, setMyGpuList] = useState([]);
 
   useEffect(() => {
-    fetch(BASE_URL + `/users/${user.id}/gpus`)
-      .then((r) => r.json())
-      .then(setMyGpuList);
+    if (user != null) {
+      fetch(BASE_URL + `/users/${user.id}/gpus`)
+        .then((r) => r.json())
+        .then(setMyGpuList);
+    }
   }, []);
 
   const gpusItem = myGpuList.map((gpu) => (
@@ -23,11 +25,12 @@ export default function DashboardPage({ user }) {
       sku={gpu.sku}
     />
   ));
-  console.log(myGpuList);
+  console.log("dashboard gpu list:", myGpuList);
   console.log("dashboard log", user);
   return (
     <div>
-        <p>Current user: {user.email}</p>
+      {user ? <p>Current user: {user.email}</p> : <Redirect to="/" />}
+      <button onClick={onLogOut}>Logout</button>
       <Link
         to={{
           pathname: "/gpus",
