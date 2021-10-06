@@ -31,7 +31,7 @@ function App() {
       Hello App.js!
       <Switch>
         <Route exact path="/gpus">
-          <GPUsPage user={currentUser} />
+          <GPUsPage user={currentUser} loggedIn={loggedIn} />
         </Route>
         <Route exact path="/dashboard">
           <DashboardPage loggedIn={loggedIn} user={currentUser} onLogOut={handleLogOut} />

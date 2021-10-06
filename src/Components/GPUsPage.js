@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom"
+import { Link, Redirect } from "react-router-dom"
 import GPUCard from "./GPUCard";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
-export default function GPUsPage({ user }) {
+export default function GPUsPage({ user, loggedIn }) {
   // console.log("Gpus page user:", user)
   const [gpuList, setGpuList] = useState([]);
   const [filterGPUs, setFilterGPUs] = useState(false);
@@ -44,6 +44,7 @@ export default function GPUsPage({ user }) {
   return (
     <div>
       {/* <p>Current user: {user.email}</p> */}
+      {loggedIn ? null : <Redirect to="/" />}
       <Link
         to={{
           pathname: "/dashboard",
