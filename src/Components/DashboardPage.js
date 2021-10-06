@@ -16,7 +16,7 @@ export default function DashboardPage({ user, onLogOut, loggedIn }) {
         .then(setMyGpuList);
     }
   }, []);
-  console.log(myGpuList)
+  // console.log(myGpuList)
 
   function handleDeleteGpu(gpuToDelete) {
     const updatedMyGpuList = myGpuList.filter(
@@ -44,8 +44,8 @@ export default function DashboardPage({ user, onLogOut, loggedIn }) {
       onDeleteGpu={handleDeleteGpu}
     />
   ));
-  console.log("dashboard gpu list:", myGpuList);
-  console.log("dashboard log", user);
+  // console.log("dashboard gpu list:", myGpuList);
+  // console.log("dashboard log", user);
 
 
   return (

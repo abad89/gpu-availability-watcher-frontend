@@ -14,7 +14,7 @@ function App() {
       handleLogIn();
     }
     setCurrentUser(user);
-    console.log("handleChangeUser", currentUser);
+    // console.log("handleChangeUser", currentUser);
   }
 
   function handleLogIn() {
@@ -25,7 +25,7 @@ function App() {
     history.push("/")
     handleLogIn()
     setCurrentUser(null)
-    console.log("logging out...")
+    // console.log("logging out...")
   }
 
   return (
