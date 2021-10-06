@@ -21,12 +21,14 @@ export default function GPUsPage({ user }) {
   const gpusItem = activeGPUS.map((gpu) => (
     <GPUCard
       key={gpu.id}
+      gpuid={gpu.id}
       name={gpu.name}
       largeImage={gpu.largeImage}
       salePrice={gpu.salePrice}
       onlineAvailability={gpu.onlineAvailability}
       url={gpu.url}
       sku={gpu.sku}
+      user={user}
     />
   ));
 
