@@ -13,17 +13,19 @@ function GPUCard({ name, onlineAvailability, salePrice, largeImage, url, sku, gp
             body: JSON.stringify(newUserGPU),
           })
             .then((r) => r.json())
-            .then(console.log("watching gpu"));
+            // .then(console.log("watching gpu"));
 
     }
   return (
-    <div>
-      <h1><a href={url}>{name}</a></h1>
-      {/* <p>Debug - gpu id: {gpuid}</p> */}
-      <img src={largeImage} alt={name}></img>
-      {onlineAvailability ? <p>Available!</p> : <p>Unavailable</p>}
-      <p>Price: {salePrice}</p>
-      <button onClick={handleWatchClick}>Watch</button>
+    <div className="col-12">
+      <div className="m-5">
+        <h5 className=""><a href={url}>{name}</a></h5>
+        {/* <p>Debug - gpu id: {gpuid}</p> */}
+        <img src={largeImage} alt={name}></img>
+        {onlineAvailability ? <p>Available!</p> : <p>Unavailable</p>}
+        <p>Price: {salePrice}</p>
+        <button className="btn" onClick={handleWatchClick}>Watch</button>
+      </div>
     </div>
   );
 }
