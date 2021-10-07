@@ -55,9 +55,7 @@ export default function GPUsPage({ user, loggedIn }) {
       {filterGPUs ? null : <button onClick={handleToggleFilterClick}>Hide Unavailable GPUs</button>}
       {filterGPUs ? <button onClick={handleToggleFilterClick}>Show All GPUs</button> : null}
       <div className="container">
-        <div className="d-flex row p6">
           {gpusItem}
-        </div>
       </div>
     </div>
   );

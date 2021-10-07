@@ -56,15 +56,13 @@ export default function DashboardPage({ user, onLogOut, loggedIn }) {
         {hideEditForm ? null : <EditEmailForm user={user} onLogOut={onLogOut} /> }
       </div>
       <button onClick={onLogOut}>Logout</button>
-      <Link
-        to={{
-          pathname: "/gpus",
-        }}
-      >
+      <Link to="/gpus">
         View GPU Database
       </Link>
       <h1>Your watched GPUs:</h1>
-      {gpusItem}
+      <div className="container">
+        {gpusItem}
+      </div>
     </div>
   );
 }

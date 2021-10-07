@@ -7,16 +7,15 @@ function handleStopWatchingClick(e){
     fetch(BASE_URL + `/users/${user.id}/usergpus/${watchid}`, {
         method: "DELETE",
     })
-    .then((r) => r.json())
     .then(() => onDeleteGpu(watchid))
 
 }
 
     return (
-      <div>
-        <h1><a href={url}>{name}</a></h1>
+      <div className="col-12">
+        <h4><a href={url}>{name}</a></h4>
         <img src={largeImage} alt={name}></img>
-        <p>{onlineAvailability}</p>
+        <p>{onlineAvailability ? <p>Available</p> : <p>Unavailable</p>}</p>
         <p>Price: {salePrice}</p>
         {/* <p>{sku}</p> */}
         <button onClick={handleStopWatchingClick}>Stop Watching</button>

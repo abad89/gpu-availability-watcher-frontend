@@ -68,9 +68,9 @@ export default function LoginPage({ onChangeUser }) {
   ));
 
   return (
-    <div className="">
+    <div class="w-50 mx-auto">
       <p>{errors}</p>
-      <div className={""}>
+      <div className={"col-md-8 offset-md-2 p-2"}>
         <form onSubmit={handleSubmit}>
           <input
             className={""}
