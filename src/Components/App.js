@@ -28,7 +28,6 @@ function App() {
 
   return (
     <div className="App">
-      Hello App.js!
       <Switch>
         <Route exact path="/gpus">
           <GPUsPage user={currentUser} loggedIn={loggedIn} />

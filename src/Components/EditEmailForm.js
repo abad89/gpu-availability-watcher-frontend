@@ -1,9 +1,7 @@
-import { useState, useEffect } from 'react'
-import { useHistory } from "react-router-dom"
+import { useState } from 'react'
 const BASE_URL = process.env.REACT_APP_BASE_URL
 
 export default function EditEmailForm({ user, onLogOut }) {
-    let history = useHistory();
     const [formData, setFormData] = useState({
         email: `${user.email}`
     });

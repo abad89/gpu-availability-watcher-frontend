@@ -16,8 +16,8 @@ function UserButtons({ user, email, id, onChangeUser, onDeleteUser }) {
     }
   
     return (
-      <div className="">
-        <div className={"p-1 col-6"}>
+      <div className="row">
+        <div className={"col-md-8 offset-md-2 p-2"}>
           <button className={"btn btn-outline-primary"} onClick={handleSelectClick}>{email}</button> -&gt;
           <button className={"btn btn-sm btn-outline-danger"} onClick={handleDeleteClick}> Delete User</button>
         </div>

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from "react-router-dom";
 import App from './Components/App';
 import reportWebVitals from './reportWebVitals';
+import "./bootstrap.css"
 
 ReactDOM.render(
   <React.StrictMode>
