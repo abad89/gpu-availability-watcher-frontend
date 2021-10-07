@@ -15,7 +15,7 @@ function handleStopWatchingClick(e){
       <div className="col-12">
         <h4><a href={url}>{name}</a></h4>
         <img src={largeImage} alt={name}></img>
-        <p>{onlineAvailability ? <p>Available</p> : <p>Unavailable</p>}</p>
+        {onlineAvailability ? <p>Available</p> : <p>Unavailable</p>}
         <p>Price: {salePrice}</p>
         {/* <p>{sku}</p> */}
         <button onClick={handleStopWatchingClick}>Stop Watching</button>
