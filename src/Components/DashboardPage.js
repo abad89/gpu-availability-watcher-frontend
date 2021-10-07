@@ -5,7 +5,7 @@ import EditEmailForm from "./EditEmailForm";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
-export default function DashboardPage({ user, onLogOut, loggedIn }) {
+export default function DashboardPage({ user, onLogOut, loggedIn, lastUpdated }) {
   const [myGpuList, setMyGpuList] = useState([]);
   const [hideEditForm, setHideEditForm] = useState(true);
 
@@ -59,6 +59,7 @@ export default function DashboardPage({ user, onLogOut, loggedIn }) {
       <Link to="/gpus">
         View GPU Database
       </Link>
+      Availability last updated: {lastUpdated[0].updated_at}
       <h1>Your watched GPUs:</h1>
       <div className="container">
         {gpusItem}

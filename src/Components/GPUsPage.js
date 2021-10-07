@@ -4,7 +4,7 @@ import GPUCard from "./GPUCard";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
-export default function GPUsPage({ user, loggedIn }) {
+export default function GPUsPage({ user, loggedIn, lastUpdated }) {
   // console.log("Gpus page user:", user)
   const [gpuList, setGpuList] = useState([]);
   const [filterGPUs, setFilterGPUs] = useState(false);
@@ -45,15 +45,12 @@ export default function GPUsPage({ user, loggedIn }) {
     <div>
       {/* <p>Current user: {user.email}</p> */}
       {loggedIn ? null : <Redirect to="/" />}
-      <Link
-        to={{
-          pathname: "/dashboard",
-        }}
-      >
+      <Link to="/dashboard">
         Return to Dashboard
       </Link>
       {filterGPUs ? null : <button onClick={handleToggleFilterClick}>Hide Unavailable GPUs</button>}
       {filterGPUs ? <button onClick={handleToggleFilterClick}>Show All GPUs</button> : null}
+      Availability last updated: {lastUpdated[0].updated_at}
       <div className="container">
           {gpusItem}
       </div>
