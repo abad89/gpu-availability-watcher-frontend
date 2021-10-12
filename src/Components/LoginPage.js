@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import UserButtons from "./UserButtons";
+import LoadingSpinner from "./LoadingSpinner";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -82,6 +83,7 @@ export default function LoginPage({ onChangeUser }) {
           <input className={""} type="submit" value="Add User"></input>
         </form>
       </div>
+      {userList.length ? null : <LoadingSpinner />}
       {usersItem}
     </div>
   );
