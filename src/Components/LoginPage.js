@@ -16,6 +16,7 @@ export default function LoginPage({ onChangeUser }) {
 
   const [formData, setFormData] = useState({
     email: "",
+    password: "",
   });
 
   function handleChange(e) {
@@ -34,6 +35,7 @@ export default function LoginPage({ onChangeUser }) {
     e.preventDefault();
     const newUser = {
       email: formData.email,
+      password: formData.password,
     };
     const response = await fetch(BASE_URL + "/users", {
       method: "POST",
@@ -71,13 +73,19 @@ export default function LoginPage({ onChangeUser }) {
   return (
     <div className="w-50 mx-auto">
       <p>{errors}</p>
+      <p>Sign up:</p>
       <div className={"col-md-8 offset-md-2 p-2"}>
         <form onSubmit={handleSubmit}>
           <input
-            className={""}
             placeholder="email address"
             name="email"
             value={formData.email}
+            onChange={handleChange}
+          ></input>
+          <input
+            placeholder="password"
+            name="password"
+            value={formData.password}
             onChange={handleChange}
           ></input>
           <input className={""} type="submit" value="Add User"></input>
