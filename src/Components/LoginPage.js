@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
-export default function LoginPage({ onChangeUser }) {
+export default function LoginPage() {
   const [errors, setErrors] = useState([]);
 
   const [formData, setFormData] = useState({
@@ -43,17 +43,18 @@ export default function LoginPage({ onChangeUser }) {
   }
 
   return (
-    <div className="w-50 mx-auto">
-      <p>{errors}</p>
+    <div className="">
+      <div className="d-flex p-2 justify-content-center">
       <p>Login:</p>
-      <div className={"col-md-8 offset-md-2 p-2"}>
+      </div>
+      <div className={"d-flex p-2 justify-content-center"}>
         <form onSubmit={handleSubmit}>
           <input
             placeholder="email address"
             name="email"
             value={formData.email}
             onChange={handleChange}
-          ></input>
+            ></input>
           <br/>
           <input
             type="password"
@@ -61,12 +62,13 @@ export default function LoginPage({ onChangeUser }) {
             name="password"
             value={formData.password}
             onChange={handleChange}
-          ></input>
+            ></input>
           <br/>
           <input className={""} type="submit" value="Log In"></input>
         </form>
       </div>
-      <div>
+      <div className="d-flex flex-column p-2 justify-content-center text-center">
+        <p>{errors}</p>
         <p>New user? <Link to ="/register">Sign Up.</Link></p>
       </div>
     </div>
