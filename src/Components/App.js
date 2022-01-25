@@ -4,8 +4,9 @@ import { useState, useEffect } from "react"
 import { Route, Switch, Redirect, useHistory } from "react-router-dom";
 import Header from "./Header";
 import DashboardPage from "./DashboardPage";
-import LoginPage from "./LoginPage";
+import SignUpPage from "./SignUpPage";
 import GPUsPage from "./GPUsPage"
+import LoginPage from "./LoginPage";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -24,19 +25,16 @@ function App() {
       })
       .then (r => r.json())
       .then (data => {
-        // console.log(data)
-        handleChangeUser(data)
+        setCurrentUser(data)
+        handleChangeUser(data);
       })
     }
   }, [])
 
   function handleChangeUser(user) {
-    // handleLogIn();
-    var testVar = "yes"
-    setCurrentUser(user);
-    whoIsCurrentUser()
-    console.log("handleChangeUser l.38", currentUser)
-    console.log(testVar)
+    handleLogIn();
+    // setCurrentUser(user);
+    // console.log("handleChangeUser l.38", currentUser)
   }
 
   function handleLogIn() {
@@ -47,14 +45,10 @@ function App() {
     history.push("/")
     handleLogIn()
     setCurrentUser(null)
-    // console.log("logging out...")
+    localStorage.removeItem("token")
   }
 
-  function whoIsCurrentUser() {
-    console.log(currentUser)
-  }
-
-  console.log(currentUser)
+  // console.log(currentUser)
 
   return (
     <div className="App">
@@ -67,7 +61,8 @@ function App() {
           <DashboardPage loggedIn={loggedIn} user={currentUser} onLogOut={handleLogOut} />
         </Route>
         <Route exact path="/">
-          {loggedIn ? <Redirect to="/dashboard" user={currentUser} /> : <LoginPage onChangeUser={handleChangeUser} />}
+          {loggedIn ? <Redirect to="/dashboard" user={currentUser} /> : <SignUpPage onChangeUser={handleChangeUser} />}
+          <LoginPage />
         </Route>
       </Switch>
     </div>

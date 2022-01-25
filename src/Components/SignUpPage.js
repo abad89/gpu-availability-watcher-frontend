@@ -2,7 +2,7 @@ import { useState } from "react";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
-export default function LoginPage({ onChangeUser }) {
+export default function SignUpPage({ onChangeUser }) {
   const [errors, setErrors] = useState([]);
 
   const [formData, setFormData] = useState({
@@ -19,17 +19,16 @@ export default function LoginPage({ onChangeUser }) {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const credentials = {
+    const newUser = {
       email: formData.email,
       password: formData.password,
     };
-    const response = await fetch(BASE_URL + "/login", {
+    const response = await fetch(BASE_URL + "/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Accept": "application/json"
       },
-      body: JSON.stringify(credentials),
+      body: JSON.stringify(newUser),
     });
     const data = await response.json();
     if (response.ok) {
@@ -44,7 +43,7 @@ export default function LoginPage({ onChangeUser }) {
   return (
     <div className="w-50 mx-auto">
       <p>{errors}</p>
-      <p>Login:</p>
+      <p>Sign up:</p>
       <div className={"col-md-8 offset-md-2 p-2"}>
         <form onSubmit={handleSubmit}>
           <input
