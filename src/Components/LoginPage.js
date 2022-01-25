@@ -46,8 +46,11 @@ export default function LoginPage({ onChangeUser }) {
     });
     const data = await response.json();
     if (response.ok) {
-      handleAddUser(data);
+      console.log(data)
+      handleAddUser(data.user);
+      localStorage.setItem("token", data.jwt)
     } else {
+      console.log(data)
       setErrors(data.errors);
     }
   }

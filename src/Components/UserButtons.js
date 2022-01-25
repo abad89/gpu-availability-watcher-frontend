@@ -2,6 +2,7 @@ const BASE_URL = process.env.REACT_APP_BASE_URL
 
 function UserButtons({ user, email, id, onChangeUser, onDeleteUser }) {
     function handleSelectClick() {
+      console.log(user)
       onChangeUser(user);
     }
     function handleDeleteClick() {

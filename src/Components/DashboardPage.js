@@ -8,6 +8,7 @@ const BASE_URL = process.env.REACT_APP_BASE_URL;
 export default function DashboardPage({ user, onLogOut, loggedIn }) {
   const [myGpuList, setMyGpuList] = useState([]);
   const [hideEditForm, setHideEditForm] = useState(true);
+  console.log(user)
 
   useEffect(() => {
     if (user != null) {
@@ -50,9 +51,9 @@ export default function DashboardPage({ user, onLogOut, loggedIn }) {
 
   return (
     <div>
-      {loggedIn ? null : <Redirect to="/" />}
+      {/* {loggedIn ? null : <Redirect to="/" />} */}
       <div>
-        {loggedIn ? <p>Welcome back, {user.email}<button onClick={handleEditClick}>Edit Email</button></p> : null }
+        <p>Welcome back, {user.email}<button onClick={handleEditClick}>Edit Email</button></p>
         {hideEditForm ? null : <EditEmailForm user={user} onLogOut={onLogOut} /> }
       </div>
       <button onClick={onLogOut}>Logout</button>
