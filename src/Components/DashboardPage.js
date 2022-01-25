@@ -51,7 +51,7 @@ export default function DashboardPage({ user, onLogOut, loggedIn }) {
 
   return (
     <div>
-      {/* {loggedIn ? null : <Redirect to="/" />} */}
+      {loggedIn ? null : <Redirect to="/" />}
       <div>
         <p>Welcome back, {user?.email}<button onClick={handleEditClick}>Edit Email</button></p>
         {hideEditForm ? null : <EditEmailForm user={user} onLogOut={onLogOut} /> }

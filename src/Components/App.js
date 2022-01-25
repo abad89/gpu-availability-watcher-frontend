@@ -60,9 +60,11 @@ function App() {
         <Route exact path="/dashboard">
           <DashboardPage loggedIn={loggedIn} user={currentUser} onLogOut={handleLogOut} />
         </Route>
+        <Route exact path="/register">
+          <SignUpPage />
+        </Route>
         <Route exact path="/">
-          {loggedIn ? <Redirect to="/dashboard" user={currentUser} /> : <SignUpPage onChangeUser={handleChangeUser} />}
-          <LoginPage />
+          {loggedIn ? <Redirect to="/dashboard" user={currentUser} /> : <LoginPage onChangeUser={handleChangeUser} />}
         </Route>
       </Switch>
     </div>

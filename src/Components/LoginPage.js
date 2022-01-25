@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -53,6 +54,7 @@ export default function LoginPage({ onChangeUser }) {
             value={formData.email}
             onChange={handleChange}
           ></input>
+          <br/>
           <input
             type="password"
             placeholder="password"
@@ -60,8 +62,12 @@ export default function LoginPage({ onChangeUser }) {
             value={formData.password}
             onChange={handleChange}
           ></input>
-          <input className={""} type="submit" value="Add User"></input>
+          <br/>
+          <input className={""} type="submit" value="Log In"></input>
         </form>
+      </div>
+      <div>
+        <p>New user? <Link to ="/register">Sign Up.</Link></p>
       </div>
     </div>
   );

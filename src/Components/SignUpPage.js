@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -52,6 +53,7 @@ export default function SignUpPage({ onChangeUser }) {
             value={formData.email}
             onChange={handleChange}
           ></input>
+          <br/>
           <input
             type="password"
             placeholder="password"
@@ -59,8 +61,12 @@ export default function SignUpPage({ onChangeUser }) {
             value={formData.password}
             onChange={handleChange}
           ></input>
+          <br/>
           <input className={""} type="submit" value="Add User"></input>
         </form>
+      </div>
+      <div>
+        <p>Already have an account? <Link to="/">Log in.</Link></p>
       </div>
     </div>
   );
