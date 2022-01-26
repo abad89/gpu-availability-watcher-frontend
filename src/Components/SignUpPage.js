@@ -49,6 +49,7 @@ export default function SignUpPage() {
       <div className={"d-flex p-2 justify-content-center"}>
         <form onSubmit={handleSubmit}>
           <input
+            className="form-control"
             placeholder="email address"
             name="email"
             value={formData.email}
@@ -56,6 +57,7 @@ export default function SignUpPage() {
             ></input>
           <br/>
           <input
+            className="form-control"
             type="password"
             placeholder="password"
             name="password"
@@ -63,7 +65,7 @@ export default function SignUpPage() {
             onChange={handleChange}
             ></input>
           <br/>
-          <input className={""} type="submit" value="Add User"></input>
+          <button className={"btn btn-primary mx-auto d-block"} type="submit" >Register</button>
         </form>
       </div>
       <div className="d-flex flex-column p-2 justify-content-center text-center">
