@@ -40,18 +40,21 @@ export default function GPUsPage({ user, loggedIn }) {
   function handleToggleFilterClick(){
     setFilterGPUs((filterGPUs) => !filterGPUs)
   }
+  // console.log("gpu page logged in?", loggedIn)
 
   return (
     <div>
       {/* <p>Current user: {user.email}</p> */}
-      {loggedIn ? null : <Redirect to="/" />}
-      <Link to="/dashboard">
+      {/* {loggedIn ? null : <Redirect to="/" />} */}
+      {/* <Link to="/dashboard">
         Return to Dashboard
-      </Link>
+      </Link> */}
       {filterGPUs ? null : <button onClick={handleToggleFilterClick}>Hide Unavailable GPUs</button>}
       {filterGPUs ? <button onClick={handleToggleFilterClick}>Show All GPUs</button> : null}
       <div className="container">
+        <div className="row">
           {gpusItem}
+        </div>
       </div>
     </div>
   );

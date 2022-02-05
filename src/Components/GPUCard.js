@@ -17,14 +17,14 @@ function GPUCard({ name, onlineAvailability, salePrice, largeImage, url, sku, gp
 
     }
   return (
-    <div className="col-12">
-      <div className="m-5">
-        <h5 className=""><a href={url}>{name}</a></h5>
-        {/* <p>Debug - gpu id: {gpuid}</p> */}
-        <img src={largeImage} alt={name}></img>
-        {onlineAvailability ? <p>Available!</p> : <p>Unavailable</p>}
-        <p>Price: {salePrice}</p>
-        <button className="btn" onClick={handleWatchClick}>Watch</button>
+    <div className="col-lg-4 col-sm-12" style={{ padding: 25 }}>
+      <div className="card text-center">
+      <p className=""><a href={url}>{name}</a></p>
+      {/* <p>Debug - gpu id: {gpuid}</p> */}
+      <img className="card-img-top" src={largeImage} alt={name}></img>
+      {onlineAvailability ? <p className="bg-success text-primary">Available!</p> : <p className="bg-secondary text-warning">Unavailable</p>}
+      <p>Price: {salePrice}</p>
+      <button className="btn" onClick={handleWatchClick}>Watch</button>
       </div>
     </div>
   );

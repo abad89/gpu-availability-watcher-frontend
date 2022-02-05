@@ -11754,3 +11754,21 @@ legend {
 .list-group-item-action:hover {
   background-color: #23272b;
 }
+
+
+/* custom */
+.card-img-top {
+  width: 100%;
+  height: 100px;
+  object-fit: scale-down;
+}
+
+/* .btn:focus{
+  outline: none;
+  box-shadow: none;
+} */
+
+:focus:not(:focus-visible) {
+  outline: 0!important;
+  box-shadow: none!important;
+}

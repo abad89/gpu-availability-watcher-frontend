@@ -3,9 +3,9 @@
 import { useState, useEffect } from "react"
 import { Route, Switch, Redirect, useHistory } from "react-router-dom";
 import Header from "./Header";
-import DashboardPage from "./DashboardPage";
+import MyGPUsContainer from "./MyGPUsContainer";
 import SignUpPage from "./SignUpPage";
-import GPUsPage from "./GPUsPage"
+import GPUDatabaseContainer from "./GPUDatabaseContainer"
 import LoginPage from "./LoginPage";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -13,6 +13,7 @@ const BASE_URL = process.env.REACT_APP_BASE_URL;
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [loggedIn, setLoggedIn] = useState(false);
+  const [myGpuList, setMyGpuList] = useState([]);
   let history = useHistory();
 
   useEffect(() => {
@@ -30,6 +31,18 @@ function App() {
       })
     }
   }, [])
+  
+console.log("prior to useEffect", myGpuList)
+
+  useEffect(() => {
+    if (currentUser != null && myGpuList.length === 0) {
+      fetch(BASE_URL + `/users/${currentUser.id}/usergpus`)
+        .then((r) => r.json())
+        .then(setMyGpuList);
+    }
+  }, [currentUser]);
+
+  console.log("after useEffect", myGpuList)
 
   function handleChangeUser(user) {
     handleLogIn();
@@ -54,11 +67,12 @@ function App() {
     <div className="App">
       <Header />
       <Switch>
-        <Route exact path="/gpus">
+        {/* <Route exact path="/gpus">
           <GPUsPage user={currentUser} loggedIn={loggedIn} />
-        </Route>
+        </Route> */}
         <Route exact path="/dashboard">
-          <DashboardPage loggedIn={loggedIn} user={currentUser} onLogOut={handleLogOut} />
+          <MyGPUsContainer loggedIn={loggedIn} user={currentUser} onLogOut={handleLogOut} myGpuListProp={myGpuList} />
+          <GPUDatabaseContainer loggedIn={loggedIn} user={currentUser} />
         </Route>
         <Route exact path="/register">
           <SignUpPage />

@@ -12,13 +12,15 @@ function handleStopWatchingClick(e){
 }
 
     return (
-      <div className="col-12">
-        <h4><a href={url}>{name}</a></h4>
-        <img src={largeImage} alt={name}></img>
-        {onlineAvailability ? <p>Available</p> : <p>Unavailable</p>}
-        <p>Price: {salePrice}</p>
-        {/* <p>{sku}</p> */}
-        <button onClick={handleStopWatchingClick}>Stop Watching</button>
+      <div className="col-lg-4 col-sm-12">
+        <div className="card text-center">
+          <p><a href={url}>{name}</a></p>
+          <img className="card-img-top" src={largeImage} alt={name}></img>
+          {onlineAvailability ? <p>Available</p> : <p>Unavailable</p>}
+          <p>Price: {salePrice}</p>
+          {/* <p>{sku}</p> */}
+          <button onClick={handleStopWatchingClick}>Stop Watching</button>
+        </div>
       </div>
     );
   }
