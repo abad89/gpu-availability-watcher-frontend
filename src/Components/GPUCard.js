@@ -24,7 +24,7 @@ function GPUCard({ name, onlineAvailability, salePrice, largeImage, url, sku, gp
       <img className="card-img-top" src={largeImage} alt={name}></img>
       {onlineAvailability ? <p className="bg-success text-primary">Available!</p> : <p className="bg-secondary text-warning">Unavailable</p>}
       <p>Price: {salePrice}</p>
-      <button className="btn" onClick={handleWatchClick}>Watch</button>
+      {/* <button className="btn" onClick={handleWatchClick}>Watch</button> */}
       </div>
     </div>
   );

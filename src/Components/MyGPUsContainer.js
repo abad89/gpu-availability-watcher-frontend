@@ -67,7 +67,7 @@ export default function DashboardPage({
       {/* <Link to="/gpus">
         View GPU Database
       </Link> */}
-      <button
+      {/* <button
         className="btn btn-primary"
         type="button"
         data-bs-toggle="collapse"
@@ -82,7 +82,7 @@ export default function DashboardPage({
           <FontAwesomeIcon icon="chevron-right" />
         )}{" "}
         Watched GPUs:
-      </button>
+      </button> */}
       <div className="container">
         <div className="collapse show" id="collapseGpus">
           <div className="row">{gpusItem}</div>

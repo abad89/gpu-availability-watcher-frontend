@@ -75,7 +75,7 @@ console.log("prior to useEffect", myGpuList)
           <GPUDatabaseContainer loggedIn={loggedIn} user={currentUser} />
         </Route>
         <Route exact path="/register">
-          <SignUpPage />
+          {loggedIn ? <Redirect to="/dashboard" /> : <SignUpPage /> }
         </Route>
         <Route exact path="/">
           {loggedIn ? <Redirect to="/dashboard" user={currentUser} /> : <LoginPage onChangeUser={handleChangeUser} />}
